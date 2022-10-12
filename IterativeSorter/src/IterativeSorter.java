@@ -28,19 +28,21 @@ public class IterativeSorter {
 
 	public void doInsertionSort(IntegerArray arrayToSort) {
 		for(int i = 0; i < arrayToSort.length()-1; i++) {
-			int j = i;
+			int j = i - 1;
+			int currentValue = arrayToSort.read(j+1);
 
-			if (j >0){
-				int currentValue = arrayToSort.read(j);
-				int lastValue = arrayToSort.read(j-1);
+			if (j >=0){
+				
+				
 
-				while(j>0 && lastValue > currentValue) {
-					arrayToSort.write(j-1, currentValue);
+				while(j>=0 && arrayToSort.read(j) > currentValue) {
+					int lastValue = arrayToSort.read(j);
+					
+					arrayToSort.write(j, arrayToSort.read(j + 1));
+					arrayToSort.write(j+1, lastValue);					
 					j = j -1;
 				}
-			}
-			else {
-				j++;
+				
 			}
 		}
 	}
