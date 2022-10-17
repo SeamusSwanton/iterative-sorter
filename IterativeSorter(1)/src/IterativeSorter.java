@@ -12,7 +12,7 @@ public class IterativeSorter {
 				
 				for (int j = 0; j < arrayToSort.length(); j++) {
 					
-					if(currentValue > nextValue) {
+					if(currentValue > nextValue && j>=0) {
 						arrayToSort.write(j+1, currentValue);
 						arrayToSort.write(j, nextValue);
 					}
