@@ -4,20 +4,16 @@ public class IterativeSorter {
 		boolean hasChanged = true;
 
 		if (hasChanged == true) {
-			
-			for(int i = 0; i <= arrayToSort.length()-1; i++) {
 
-				int currentValue = arrayToSort.read(i);
-				int nextValue = arrayToSort.read(i+1);
-				
-				for (int j = 0; j < arrayToSort.length(); j++) {
-					
-					if(currentValue > nextValue && j>=0) {
-						arrayToSort.write(j+1, currentValue);
-						arrayToSort.write(j, nextValue);
-					}
-					else {
-						continue;
+			for(int i = 0; i < arrayToSort.length()-1; i++) {
+
+				for(int j = 0; j < arrayToSort.length() - i - 1; j++) {
+
+					if (arrayToSort.read(j) > arrayToSort.read(j+1)) {
+
+						int temp = arrayToSort.read(j);
+						arrayToSort.write(j, arrayToSort.read(j+1));
+						arrayToSort.write(j + 1, temp);
 					}
 				}
 			}
@@ -26,20 +22,20 @@ public class IterativeSorter {
 	}
 
 	public void doSelectionSort(IntegerArray arrayToSort) {	
-		for(int i = 0; i <= arrayToSort.length()-1; i++) {
+		for(int i = 0; i < arrayToSort.length()-1; i++) {
 			int minIndex = i;
-			int minIndexValue = arrayToSort.read(minIndex);
 
 			for (int j = i+1; j < arrayToSort.length(); j++) {			
-				if (arrayToSort.read(j) < minIndexValue) {
+				if (arrayToSort.read(j) < arrayToSort.read(minIndex)) {
 					minIndex = j;
-					break;
+					continue;
 				}
-
-				arrayToSort.write(minIndex, arrayToSort.read(j));
-				arrayToSort.write(j, minIndexValue);
-
 			}
+			int temp = arrayToSort.read(minIndex);
+			arrayToSort.write(minIndex, arrayToSort.read(i));
+			arrayToSort.write(i, temp);
+
+
 		}
 
 	}
