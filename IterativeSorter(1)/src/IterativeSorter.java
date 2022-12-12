@@ -45,17 +45,20 @@ public class IterativeSorter {
 		for(int i = 0; i <=  arrayToSort.length()-1; i++) {
 			int j = i - 1;
 			int currentValue = arrayToSort.read(j+1);
-
-			if (j >=0)				
-
+			
+			
+			if (j >=0) {
+				int lastValue = arrayToSort.read(j);
+			
+			
 				while(j>=0 && arrayToSort.read(j) > currentValue) {
-					int lastValue = arrayToSort.read(j);
+					
 
 					arrayToSort.write(j, arrayToSort.read(j + 1));
 					arrayToSort.write(j+1, lastValue);					
 					j = j -1;
 				}
-
+			}
 		}
 	}
 }
